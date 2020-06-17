@@ -1,0 +1,14 @@
+.appear {
+	opacity: 0;
+	transition: opacity 500ms;
+}
+
+.appear-active {
+	opacity: 1;
+	transition: opacity 500ms;
+}
+
+.appear-done {
+	opacity: 1;
+	transition: opacity 500ms;
+}

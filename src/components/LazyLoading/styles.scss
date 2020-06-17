@@ -1,0 +1,53 @@
+.fade-appear {
+  opacity: 0;
+  transform: translateY(100px);
+  transition: opacity 500ms, transform 500ms;
+}
+
+.fade-appear-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 500ms, transform 500ms;
+}
+
+.fade-appear-done {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 500ms, transform 500ms;
+}
+
+.fadeSlideRight-appear {
+  opacity: 0;
+  transform: translateX(-250px);
+  transition: opacity 500ms, transform 500ms;
+}
+
+.fadeSlideRight-appear-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 500ms, transform 500ms;
+}
+
+// .fadeSlideRight-appear-done {
+//   opacity: 1;
+//   transform: translateX(0);
+//   transition: opacity 500ms, transform 500ms;
+// }
+
+.fadeSlideLeft-appear {
+  opacity: 0;
+  transform: translateX(250px);
+  transition: opacity 500ms, transform 500ms;
+}
+
+.fadeSlideLeft-appear-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 500ms, transform 500ms;
+}
+
+// .fadeSlideLeft-appear-done {
+//   opacity: 1;
+//   transform: translateX(0);
+//   transition: opacity 500ms, transform 500ms;
+// }
