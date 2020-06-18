@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import TypingText from './TypingText';
+// import ThemeContext from '../Theme/ThemeContext';
 
 const Banner = styled.header`
   /* background-color: rgb(15, 15, 15); */
@@ -42,7 +43,7 @@ const MeImage = styled.div`
   overflow: hidden;
   box-shadow: 10px 10px 10px black;
 
-  opacity: 0.4;
+  opacity: 0.05;
 `;
 
 const Center = styled.div`
@@ -51,6 +52,8 @@ const Center = styled.div`
 `;
 
 export default () => {
+  // const theme = useContext(ThemeContext);
+
   return (
     <Banner>
       <Center>

@@ -30,7 +30,7 @@ export default ({ children, transition, height, width, threshold = 0.5 }) => {
             if (entries[0].isIntersecting === true) setShow(true);
             return false;
           },
-          { threshold: threshold },
+          { threshold },
         );
 
         observer.observe(placeholder);

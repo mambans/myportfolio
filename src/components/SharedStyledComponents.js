@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import ThemeContext from './Theme/ThemeContext';
 
 export const H1Link = styled.a`
   text-align: center;
@@ -10,25 +11,31 @@ export const H1Link = styled.a`
   font-weight: bold;
   font-size: 2.2rem;
   transition: color 250ms, opacity 250ms;
-  color: rgb(200, 200, 200);
+  color: ${({ theme }) => theme.color2};
+  margin: 20px auto;
 
   &:hover {
-    color: #ffffff;
+    color: ${({ theme }) => theme.color};
   }
 `;
 
-export const TitleLink = ({ title, href }) => (
-  <H1Link
-    href={href}
-    onClick={(e) => {
-      if (e.target) {
-        e.target.scrollIntoView({
-          behavior : 'smooth',
-          block    : 'start',
-          inline   : 'nearest',
-        });
-      }
-    }}>
-    {title}
-  </H1Link>
-);
+export const TitleLink = ({ title, href, style }) => {
+  const theme = useContext(ThemeContext);
+  return (
+    <H1Link
+      theme={theme}
+      href={href}
+      style={{ ...style }}
+      onClick={(e) => {
+        if (e.target) {
+          e.target.scrollIntoView({
+            behavior : 'smooth',
+            block    : 'start',
+            inline   : 'nearest',
+          });
+        }
+      }}>
+      {title}
+    </H1Link>
+  );
+};

@@ -14,7 +14,13 @@ const StyledTypist = styled(Typist)`
 
 	code {
 		font-size: 1.4rem;
-	}
+  }
+
+   a{
+     color: white;
+     font-size: 3rem;
+     text-decoration: none;
+   }
 `;
 
 const EnjoyText = styled.b`
@@ -27,16 +33,16 @@ export default () => {
   const time = new Date().getHours();
   // const welcomeMsg =
   //   time <= 5 ? 'night' : time <= 10 ? 'morning' : time <= 18 ? 'evening' : 'night';
-  const welcomeMsg = time <= 5 ? 1 : time <= 10 ? 2 : time <= 18 ? 3 : 0;
+  const welcomeMsg = time <= 5 ? 1 : time <= 10 ? 2 : time <= 18 ? 3 : 1;
   const msgs = [ 'night', 'night', 'morning', 'evening' ];
 
   return (
     <StyledTypist cursor={{ hideWhenDone: true, show: false }} avgTypingDelay={35}>
-      <h1>
+      <a href='/' alt=''>
         Good {msgs[welcomeMsg - 1].substring(0, 5)}
         <Typist.Backspace count={5} delay={220} />
         {msgs[welcomeMsg]}
-      </h1>
+      </a>
       <code>
         <pre>
           {`const Me = () => (

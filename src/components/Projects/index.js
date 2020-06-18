@@ -1,19 +1,23 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useContext } from 'react';
 import styled from 'styled-components';
 import LazyLoading from '../LazyLoading';
 import ProjectsFlap from './ProjectsFlap';
 import Project from './Project';
+import ThemeContext from './../Theme/ThemeContext';
 
 const Container = styled.div`
   min-height: 1000px;
-  background: rgb(35, 35, 50);
+  background: ${({ theme }) => theme.background};
+  /* background: rgb(35, 35, 50); */
   padding: 0 10%;
+  transition: background 500ms;
 
   &::before {
     box-sizing: inherit;
     content: '';
     position: absolute;
-    border-top: 2px solid ${({ fullyVisible }) => (fullyVisible ? '#ffffff' : 'transparent')};
+    border-top: 2px solid ${({ fullyVisible, theme }) =>
+      fullyVisible ? theme.borderColor : 'transparent'};
     width: ${({ fullyVisible }) => (fullyVisible ? '100%' : 'calc(80% * 0.8)')};
     left: ${({ fullyVisible }) => (fullyVisible ? '0' : '18%')};
     /* left: ${({ fullyVisible }) => (fullyVisible ? '0' : 'calc((80% * 1.2) * 0.2)')}; */
@@ -25,6 +29,7 @@ const Container = styled.div`
 export default () => {
   const ProjectsFlapRef = useRef();
   const [ show, setShow ] = useState();
+  const theme = useContext(ThemeContext);
 
   useEffect(() => {
     const ProjectsFlap = ProjectsFlapRef.current;
@@ -47,7 +52,7 @@ export default () => {
   }, []);
 
   return (
-    <Container fullyVisible={show || window.location.hash === '#projects'}>
+    <Container fullyVisible={show || window.location.hash === '#projects'} theme={theme}>
       <ProjectsFlap
         ref={ProjectsFlapRef}
         fullyVisible={show || window.location.hash === '#projects'}

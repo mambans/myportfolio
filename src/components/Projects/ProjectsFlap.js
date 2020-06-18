@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import ThemeContext from './../Theme/ThemeContext';
 
 const StyledProjectsFlap = styled.a`
   width: 80%;
@@ -10,16 +11,15 @@ const StyledProjectsFlap = styled.a`
   justify-content: center;
   font-size: 1.8rem;
   cursor: pointer;
-  color: rgb(200, 200, 200);
-  transition: color 250ms, border 500ms;
-  border-bottom: 2px solid #232332;
+  color: ${({ theme }) => theme.color2};
+  border-bottom: ${({ theme }) => `2px solid ${theme.background}`};
   transform: ${({ fullyVisible }) => (fullyVisible ? 'translateY(-125px)' : 'translateY(-100px)')};
-  transition: transform 250ms, color 500ms, left 500ms;
+  transition: transform 250ms, color 500ms, left 500ms, background 500ms, border 500ms;
   text-decoration: none;
-  background: rgb(35, 35, 50);
+  background: ${({ theme }) => theme.background};
 
   &:hover {
-    color: #ffffff;
+    color: ${({ theme }) => theme.color};
     transform: translateY(-125px);
   }
 
@@ -28,9 +28,12 @@ const StyledProjectsFlap = styled.a`
     content: '';
     position: absolute;
     top: 0;
-    border-top: 2px solid ${({ fullyVisible }) => (fullyVisible ? '#ffffff' : 'transparent')};
-    border-right: 2px solid ${({ fullyVisible }) => (fullyVisible ? '#ffffff' : 'transparent')};
-    border-left: 2px solid ${({ fullyVisible }) => (fullyVisible ? '#ffffff' : 'transparent')};
+    border-top: 2px solid
+      ${({ fullyVisible, theme }) => (fullyVisible ? theme.borderColor : 'transparent')};
+    border-right: 2px solid
+      ${({ fullyVisible, theme }) => (fullyVisible ? theme.borderColor : 'transparent')};
+    border-left: 2px solid
+      ${({ fullyVisible, theme }) => (fullyVisible ? theme.borderColor : 'transparent')};
     width: ${({ fullyVisible }) => (fullyVisible ? 'calc(100% - 2px)' : '0')};
     height: ${({ fullyVisible }) => (fullyVisible ? '100%' : '0')};
     left: ${({ fullyVisible }) => (fullyVisible ? '0' : '50%')};
@@ -57,10 +60,6 @@ const StyledProjectsFlap = styled.a`
       border 500ms ease-out 500ms;
   }
 
-  &:hover {
-    color: white;
-  }
-
   &:hover::before {
     left: 0;
     width: 100%;
@@ -85,8 +84,10 @@ const StyledProjectsFlap = styled.a`
 `;
 
 export default React.forwardRef(({ fullyVisible }, ref) => {
+  const theme = useContext(ThemeContext);
   return (
     <StyledProjectsFlap
+      theme={theme}
       href='#projects'
       ref={ref}
       fullyVisible={fullyVisible}

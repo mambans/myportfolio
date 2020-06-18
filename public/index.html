@@ -13,6 +13,13 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>Robin Persson</title>
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.3.2/dist/email.min.js"></script>
+    <script type="text/javascript">
+      (function(){
+          emailjs.init("user_LarvsIWsIcLY3Hdp8xN4p");
+          console.log("initiating email service.");
+      })();
+    </script>
 
   </head>
   <body>

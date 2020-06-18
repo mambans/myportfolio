@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import LazyLoading from '../LazyLoading';
 import { TitleLink } from '../SharedStyledComponents';
+import ThemeContext from '../Theme/ThemeContext';
 
 const Container = styled.div`
   min-height: 400px;
-  color: #ffffff;
+  color: ${({ theme }) => theme.color};
   margin: 100px auto;
   width: 50%;
   min-width: 500px;
@@ -15,8 +16,9 @@ const Container = styled.div`
 `;
 
 export default () => {
+  const theme = useContext(ThemeContext);
   return (
-    <Container>
+    <Container theme={theme}>
       <TitleLink title='A little bit about me' href='#about_me' />
       <LazyLoading height={25} width={'100%'}>
         <p>
