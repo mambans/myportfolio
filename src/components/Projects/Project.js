@@ -9,6 +9,7 @@ const Item = styled.div`
   /* width: calc(100% / 3); */
   /* width: calc(calc(100% / 3) - 50px); */
   width: ${16 / 9 * HEIGHT}px;
+  max-width: 100%;
   /* min-width:  */
   /* width: calc((100% / 3) - 20px); */
   background-image: url(/images/${({ backgroundImg }) => backgroundImg || 'woodCoffe.jpg'});
@@ -20,6 +21,7 @@ const Item = styled.div`
   box-shadow: 0px 0px 2px 0px black;
   text-decoration: none;
   text-shadow: 0px 0px 5px black;
+  background-position: center;
 
   h1 {
     z-index: 1;
@@ -47,6 +49,10 @@ const Item = styled.div`
     h1 {
       transform: translateY(0);
     }
+
+    #LanguagesUsed {
+      opacity: 0.8;
+    }
   }
 `;
 
@@ -58,11 +64,13 @@ const HoverPlaceholder = styled.a`
   position: absolute;
   /* width: calc(calc(100% / 3) - 50px); */
   width: ${16 / 9 * HEIGHT}px;
+  max-width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 25px;
   transform: translateY(-77.5px);
+  background-position: center;
 
   div {
     width: calc(100% - 5px);
@@ -71,6 +79,7 @@ const HoverPlaceholder = styled.a`
     background-size: cover;
     filter: blur(5px);
     border-radius: inherit;
+    background-position: center;
     /* position: absolute; */
   }
 
@@ -97,7 +106,19 @@ const GithubIconLink = styled.a`
   }
 `;
 
-const ProjectItem = ({ title, text, link, githubLink, backgroundImg }) => {
+const LanguagesUsed = styled.div`
+  position: absolute;
+  bottom: 0;
+  opacity: 0.2;
+  padding-left: 10px;
+  transition: opacity 250ms;
+
+  svg {
+    padding: 2px;
+  }
+`;
+
+const ProjectItem = ({ title, text, link, githubLink, backgroundImg, languagesIcons }) => {
   return (
     <Item backgroundImg={backgroundImg}>
       <GithubIconLink href={githubLink}>
@@ -109,6 +130,12 @@ const ProjectItem = ({ title, text, link, githubLink, backgroundImg }) => {
         {/* <p>{title}</p> */}
       </HoverPlaceholder>
       <p>{text}</p>
+      <LanguagesUsed id='LanguagesUsed'>
+        {languagesIcons &&
+          languagesIcons.map((item, index) => {
+            return { ...item, key: index };
+          })}
+      </LanguagesUsed>
     </Item>
   );
 };

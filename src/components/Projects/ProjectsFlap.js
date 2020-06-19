@@ -17,6 +17,7 @@ const StyledProjectsFlap = styled.a`
   transition: transform 250ms, color 500ms, left 500ms, background 500ms, border 500ms;
   text-decoration: none;
   background: ${({ theme }) => theme.background};
+  box-sizing: unset;
 
   &:hover {
     color: ${({ theme }) => theme.color};

@@ -19,7 +19,7 @@ export const H1Link = styled.a`
   }
 `;
 
-export const TitleLink = ({ title, href, style }) => {
+export const TitleLink = ({ children, href, style }) => {
   const theme = useContext(ThemeContext);
   return (
     <H1Link
@@ -35,7 +35,7 @@ export const TitleLink = ({ title, href, style }) => {
           });
         }
       }}>
-      {title}
+      {children}
     </H1Link>
   );
 };

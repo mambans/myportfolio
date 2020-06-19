@@ -10,6 +10,8 @@ const StyledFormControl = styled(FormControl)`
 &&&{
   width: 500px;
   margin: 50px auto;
+  max-width: 95%;
+  padding: 10px;
 
   > div.input {
     margin-bottom: 20px;
@@ -185,7 +187,9 @@ export default () => {
 
   return (
     <StyledFormControl onSubmit={handleSubmit} emailsent={String(emailsent)} theme={theme}>
-      <TitleLink title='Contact me' href='#contact_me' style={{ marginTop: '35px' }} />
+      <TitleLink href='#contact_me' style={{ marginTop: '35px' }}>
+        Contact me
+      </TitleLink>
       <TextField
         className='input'
         id='filled-basic'

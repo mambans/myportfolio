@@ -12,19 +12,25 @@ const StyledButton = styled(Button)`
   margin: 10px;
   top: 0;
   right: 0;
-  color: white;
+  color: ${({ theme }) => theme.color};
+  background: ${({ theme }) => theme.background};
+  font-weight: bold;
+
+  span {
+    color: unset;
+  }
 }
 `;
 
 export default ({ toggleTheme }) => {
   const theme = useContext(ThemeContext);
   return (
-    <StyledButton onClick={toggleTheme}>
+    <StyledButton onClick={toggleTheme} theme={theme}>
       {theme.name}
       {theme === themes.dark ? (
-        <Brightness2Icon style={{ color: 'rgb(20,20,20)' }} />
+        <Brightness2Icon style={{ color: 'rgb(50,50,50)' }} />
       ) : (
-        <WbSunnyIcon style={{ color: 'rgb(255,255,255)' }} />
+        <WbSunnyIcon style={{ color: 'rgb(50,50,50)' }} />
       )}
     </StyledButton>
   );

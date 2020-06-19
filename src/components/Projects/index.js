@@ -4,6 +4,8 @@ import LazyLoading from '../LazyLoading';
 import ProjectsFlap from './ProjectsFlap';
 import Project from './Project';
 import ThemeContext from './../Theme/ThemeContext';
+import { DiJavascript } from 'react-icons/di';
+import { FaReact, FaAws, FaCss3Alt, FaSass } from 'react-icons/fa';
 
 const Container = styled.div`
   min-height: 1000px;
@@ -65,6 +67,12 @@ export default () => {
             link={'https://aiofeed.com'}
             githubLink={'https://github.com/mambans/aiofeed'}
             backgroundImg={'site_aiofeed.png'}
+            languagesIcons={[
+              <DiJavascript style={{ color: 'yellow' }} size={20} />,
+              <FaReact style={{ color: '#65ffff' }} size={20} />,
+              <FaAws style={{ color: '#ffc940' }} size={20} />,
+              <FaCss3Alt style={{ color: 'rgb(33, 100, 243)' }} size={20} />,
+            ]}
           />
         </LazyLoading>
 
@@ -75,6 +83,12 @@ export default () => {
             link={'http://watchist.mambans.com.s3-website.eu-north-1.amazonaws.com/'}
             githubLink={'https://github.com/mambans/watchist'}
             backgroundImg={'site_watchist.png'}
+            languagesIcons={[
+              <DiJavascript style={{ color: 'yellow' }} size={20} />,
+              <FaReact style={{ color: '#65ffff' }} size={20} />,
+              <FaAws style={{ color: '#ffc940' }} size={20} />,
+              <FaSass style={{ color: '#c96195' }} size={20} />,
+            ]}
           />
         </LazyLoading>
         <LazyLoading>

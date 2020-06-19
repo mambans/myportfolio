@@ -9,18 +9,23 @@ const Container = styled.div`
   color: ${({ theme }) => theme.color};
   margin: 100px auto;
   width: 50%;
-  min-width: 500px;
+  max-width: 100%;
   font-size: 1.1rem;
   text-align: start;
   letter-spacing: 0.5px;
+  padding: 10px;
+
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+  }
 `;
 
 export default () => {
   const theme = useContext(ThemeContext);
   return (
     <Container theme={theme}>
-      <TitleLink title='A little bit about me' href='#about_me' />
-      <LazyLoading height={25} width={'100%'}>
+      <TitleLink href='#about_me'>A little bit about me</TitleLink>
+      <LazyLoading height={25} width={'100%'} delay={50}>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget metus ut nulla
           elementum eleifend. Aliquam consequat massa facilisis, vulputate enim non, convallis ante.

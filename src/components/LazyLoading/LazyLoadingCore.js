@@ -12,13 +12,15 @@ const ItemPlaceholder = styled.div`
       ? width
       : width ? width + 'px' : 16 / 9 * (typeof height === 'string' ? height : height) + 'px'};
   /* width: calc(calc(100% / 3) - 50px); */
-  margin: 25px;
+  /* margin: 25px; */
+  padding: 25px;
   border-radius: 25px;
 `;
 
-export default ({ children, transition, height, width, threshold = 0.5 }) => {
+export default ({ children, transition = 'fade', height, width, threshold = 0.5, delay = 0 }) => {
   const [ show, setShow ] = useState();
   const placeholderRef = useRef();
+  const delayTimer = useRef();
 
   useEffect(
     () => {
@@ -27,7 +29,15 @@ export default ({ children, transition, height, width, threshold = 0.5 }) => {
       if (placeholder) {
         const observer = new IntersectionObserver(
           function(entries) {
-            if (entries[0].isIntersecting === true) setShow(true);
+            if (entries[0].isIntersecting === true) {
+              if (delay) {
+                delayTimer.current = setTimeout(() => {
+                  setShow(true);
+                }, delay);
+              } else {
+                setShow(true);
+              }
+            }
             return false;
           },
           { threshold },
@@ -37,25 +47,16 @@ export default ({ children, transition, height, width, threshold = 0.5 }) => {
 
         return () => {
           observer.unobserve(placeholder);
+          clearTimeout(delayTimer.current);
         };
       }
     },
-    [ threshold ],
+    [ delay, threshold ],
   );
 
   if (show) {
     return (
-      <CSSTransition
-        in={show}
-        timeout={500}
-        classNames={transition || 'fade'}
-        // classNames={{
-        // 	appear       : styles['appear'],
-        // 	appearActive : styles['active-appear'],
-        // 	appearDone   : styles['done-appear'],
-        // }}
-        // unmountOnExit
-        appear>
+      <CSSTransition in={show} timeout={500} classNames={transition} appear>
         {children}
       </CSSTransition>
     );

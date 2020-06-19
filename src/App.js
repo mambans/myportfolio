@@ -8,6 +8,7 @@ import AboutMe from './components/AboutMe';
 import ThemeButton from './components/Theme';
 import ThemeContext, { themes } from './components/Theme/ThemeContext';
 import getLocalstorage from './components/getLocalstorage';
+import Knowledge from './components/Knowledge';
 
 const AppContainer = styled.div`
   text-align: center;
@@ -51,6 +52,7 @@ function App() {
         <Banner />
         <ThemeButton toggleTheme={toggleTheme} />
         <Projects />
+        <Knowledge />
         <AboutMe />
         <ContactMe />
       </AppContainer>
