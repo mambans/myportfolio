@@ -17,7 +17,14 @@ const ItemPlaceholder = styled.div`
   border-radius: 25px;
 `;
 
-export default ({ children, transition = 'fade', height, width, threshold = 0.5, delay = 0 }) => {
+export default ({
+  children,
+  transition = 'fade',
+  height = 50,
+  width = 50,
+  threshold = 0.5,
+  delay = null,
+}) => {
   const [ show, setShow ] = useState();
   const placeholderRef = useRef();
   const delayTimer = useRef();
@@ -62,5 +69,5 @@ export default ({ children, transition = 'fade', height, width, threshold = 0.5,
     );
   }
 
-  return <ItemPlaceholder ref={placeholderRef} height={height || 300} width={width} />;
+  return <ItemPlaceholder ref={placeholderRef} height={height} width={width} />;
 };

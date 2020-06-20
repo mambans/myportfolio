@@ -11,7 +11,7 @@ export default ({
   children,
   height,
   width,
-  transition = 'fade',
+  transition,
   threshold = 0.5,
   delay = 0,
   increment = 0,

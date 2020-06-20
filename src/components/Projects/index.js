@@ -60,7 +60,7 @@ export default () => {
         fullyVisible={show || window.location.hash === '#projects'}
       />
       <Project.Container>
-        <LazyLoading>
+        <LazyLoading transition='fade' height={350} width={16 / 9 * 300 + 50}>
           <Project.Item
             title='AioFeed'
             text='View Twitch & Youtube feeds and a Twitter list in one page, with Twitch (live/offline/update) notifications.'
@@ -74,9 +74,6 @@ export default () => {
               <FaCss3Alt style={{ color: 'rgb(33, 100, 243)' }} size={20} />,
             ]}
           />
-        </LazyLoading>
-
-        <LazyLoading>
           <Project.Item
             title='Watchist'
             text='Create a variety of lists with auto fetching details(for movies/tv series) from public API&#39;s.'
@@ -90,24 +87,18 @@ export default () => {
               <FaSass style={{ color: '#c96195' }} size={20} />,
             ]}
           />
-        </LazyLoading>
-        <LazyLoading>
           <Project.Item
             title='Felix'
             text='Hello, this is my some context about me and who I am.'
             link={'https://www.google.com'}
             githubLink={'https://github.com/mambans/aiofeed'}
           />
-        </LazyLoading>
-        <LazyLoading>
           <Project.Item
             title='Alex'
             text='Hello, this is my some context about me and who I am.'
             link={'https://www.google.com'}
             githubLink={'https://github.com/mambans/aiofeed'}
           />
-        </LazyLoading>
-        <LazyLoading>
           <Project.Item
             title='Demozar'
             text='Hello, this is my some context about me and who I am.'

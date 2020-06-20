@@ -72,6 +72,7 @@ const TextContainer = styled.div`
   flex-flow: column;
   max-width: 100%;
   max-height: 300px;
+  width: 500px;
 `;
 
 const knowledgeOnClick = () => {
