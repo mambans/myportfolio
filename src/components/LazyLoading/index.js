@@ -19,14 +19,26 @@ export default ({
   if (children.length >= 1) {
     let delayTime = delay;
     return children.map((item, index) => {
-      delayTime = delayTime + increment;
+      delayTime =
+        delayTime +
+        (index === 0
+          ? 0
+          : Array.isArray(increment)
+            ? increment[index - 1] || increment[increment.length - 1]
+            : increment);
       return (
         <LazyLoadingCore
           key={index}
           height={Array.isArray(height) ? height[index] || height[height.length - 1] : height}
           width={Array.isArray(width) ? width[index] || width[width.length - 1] : width}
-          delay={Array.isArray(delay) ? delay[index] || delay[delay.length - 1] : delay}
-          transition={Array.isArray(transition) ? transition[index] || transition[transition.length - 1] : transition || `fadeSlide${index % 2 === 0 ? 'Right' : 'Left'}`}>
+          delay={delayTime}
+          transition={
+            Array.isArray(transition) ? (
+              transition[index] || transition[transition.length - 1]
+            ) : (
+              transition || `fadeSlide${index % 2 === 0 ? 'Right' : 'Left'}`
+            )
+          }>
           {item}
         </LazyLoadingCore>
       );

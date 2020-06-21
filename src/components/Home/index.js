@@ -115,7 +115,7 @@ export default () => {
         <MeImage src={`${process.env.PUBLIC_URL}/images/me.jpg`} alt='' />
         <TextContainer>
           <TypingText />
-          <LazyLoading transition='fadeSlideUp' delay={500} increment={500}>
+          <LazyLoading transition='fadeSlideUp' delay={500} increment={[ 250, 1500 ]}>
             <WelcomeText theme={theme} fontSize={'1.5rem'}>
               My name is Robin Persson and I love computers and programming.
             </WelcomeText>
