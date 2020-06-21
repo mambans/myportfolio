@@ -44,7 +44,7 @@ const StyledProjectsFlap = styled.a`
         : 'width 500ms ease-out 500ms, left 500ms ease-out 500ms, height 500ms ease-out, border 500ms ease-out 500ms'};
   }
 
-  &::after {
+  /* &::after {
     box-sizing: inherit;
     content: '';
     position: absolute;
@@ -55,11 +55,10 @@ const StyledProjectsFlap = styled.a`
     width: 0;
     height: 0;
     left: 50%;
-    /* background: red; */
 
     transition: width 500ms ease-out 500ms, left 500ms ease-out 500ms, height 500ms ease-out,
       border 500ms ease-out 500ms;
-  }
+  } */
 
   &:hover::before {
     left: 0;
@@ -72,7 +71,7 @@ const StyledProjectsFlap = styled.a`
       border 500ms ease-out;
   }
 
-  &:hover::after {
+  /* &:hover::after {
     left: 0;
     width: 100%;
     height: 100%;
@@ -81,7 +80,7 @@ const StyledProjectsFlap = styled.a`
     border-left-color: orange;
     transition: width 500ms ease-out, left 500ms ease-out, height 500ms ease-out 500ms,
       border 500ms ease-out;
-  }
+  } */
 `;
 
 export default React.forwardRef(({ fullyVisible }, ref) => {
