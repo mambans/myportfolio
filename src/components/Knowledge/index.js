@@ -53,7 +53,7 @@ export default () => {
   const theme = useContext(ThemeContext);
   return (
     <Container>
-      <TitleLink href='#knowledge'>{'< Languages, Frameworks I know >'}</TitleLink>
+      <TitleLink href='#knowledge'>{'< Languages, Frameworks I know />'}</TitleLink>
       <ItemsContainer theme={theme}>
         <LazyLoading transition='fadeSlideLeft' delay={100} increment={75} width={150} height={150}>
           <Item>

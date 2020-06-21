@@ -12,18 +12,20 @@ const ItemPlaceholder = styled.div`
       ? width
       : width ? width + 'px' : 16 / 9 * (typeof height === 'string' ? height : height) + 'px'};
   /* width: calc(calc(100% / 3) - 50px); */
-  /* margin: 25px; */
-  padding: 25px;
+  margin: ${({ margin }) => margin};
+  padding: ${({ padding }) => padding};
   border-radius: 25px;
 `;
 
 export default ({
   children,
-  transition = 'fade',
+  transition = 'fadeSlideUp',
   height = 50,
   width = 50,
   threshold = 0.5,
   delay = null,
+  margin = 0,
+  padding = '25px',
 }) => {
   const [ show, setShow ] = useState();
   const placeholderRef = useRef();
@@ -69,5 +71,13 @@ export default ({
     );
   }
 
-  return <ItemPlaceholder ref={placeholderRef} height={height} width={width} />;
+  return (
+    <ItemPlaceholder
+      ref={placeholderRef}
+      height={height}
+      width={width}
+      padding={padding}
+      margin={margin}
+    />
+  );
 };

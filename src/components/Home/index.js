@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import TypingText from './TypingText';
 import LazyLoading from '../LazyLoading';
 import ThemeContext from '../Theme/ThemeContext';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
 
 const Banner = styled.header`
   /* background-color: rgb(15, 15, 15); */
@@ -50,7 +51,8 @@ const Center = styled.div`
 `;
 
 const WelcomeText = styled.p`
-  color: ${({ theme }) => theme.color2};
+  /* color: ${({ theme }) => theme.color2}; */
+  color: white;
   z-index: 1;
   font-size: ${({ fontSize }) => fontSize};
   width: 500px;
@@ -75,6 +77,22 @@ const TextContainer = styled.div`
   width: 500px;
 `;
 
+const IconContainer = styled.div`
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  margin-top: 20px;
+`;
+
+const IconLink = styled.a`
+  color: ${({ color }) => color};
+  opacity: 0.75;
+
+  &:hover {
+    opacity: 1;
+  }
+`;
+
 const knowledgeOnClick = () => {
   const knowledgeSection = document.querySelectorAll(`[href*="#knowledge"]`)[1];
   if (knowledgeSection) {
@@ -97,7 +115,7 @@ export default () => {
         <MeImage src={`${process.env.PUBLIC_URL}/images/me.jpg`} alt='' />
         <TextContainer>
           <TypingText />
-          <LazyLoading transition='fade' delay={1500}>
+          <LazyLoading transition='fadeSlideUp' delay={500} increment={500}>
             <WelcomeText theme={theme} fontSize={'1.5rem'}>
               My name is Robin Persson and I love computers and programming.
             </WelcomeText>
@@ -108,6 +126,14 @@ export default () => {
                 more
               </a>.
             </WelcomeText>
+            <IconContainer>
+              <IconLink
+                href='https://www.linkedin.com/in/robin-persson-aa9b91193/'
+                title='LinkedIn'
+                color='#0077b7'>
+                <LinkedInIcon size={25} color='inherit' />
+              </IconLink>
+            </IconContainer>
           </LazyLoading>
         </TextContainer>
       </Center>

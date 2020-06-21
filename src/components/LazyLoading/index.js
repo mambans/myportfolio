@@ -23,10 +23,10 @@ export default ({
       return (
         <LazyLoadingCore
           key={index}
-          height={height}
-          width={width}
-          delay={delayTime}
-          transition={transition || `fadeSlide${index % 2 === 0 ? 'Right' : 'Left'}`}>
+          height={Array.isArray(height) ? height[index] || height[height.length - 1] : height}
+          width={Array.isArray(width) ? width[index] || width[width.length - 1] : width}
+          delay={Array.isArray(delay) ? delay[index] || delay[delay.length - 1] : delay}
+          transition={Array.isArray(transition) ? transition[index] || transition[transition.length - 1] : transition || `fadeSlide${index % 2 === 0 ? 'Right' : 'Left'}`}>
           {item}
         </LazyLoadingCore>
       );

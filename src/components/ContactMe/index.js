@@ -4,6 +4,7 @@ import { FormControl, TextField, Button } from '@material-ui/core';
 import { TitleLink } from '../SharedStyledComponents';
 import getLocalstorage from './../getLocalstorage';
 import ThemeContext from '../Theme/ThemeContext';
+import LazyLoading from '../LazyLoading';
 
 const StyledFormControl = styled(FormControl)`
 
@@ -15,6 +16,10 @@ const StyledFormControl = styled(FormControl)`
 
   > div.input {
     margin-bottom: 20px;
+  }
+
+  > * {
+    z-index: 1;
   }
 }
 
@@ -49,7 +54,7 @@ const StyledFormControl = styled(FormControl)`
   border-left-color: ${({ emailsent }) => (emailsent === 'true' ? 'green' : 'transparent')};
   transition: width 500ms ease-out, left 500ms ease-out, height 500ms ease-out 500ms,
     border 500ms ease-out, border-top 2000ms ease-in 1000ms;
-  z-index: -1;
+  /* z-index: -1; */
 }
 
   &::before {
@@ -68,7 +73,7 @@ const StyledFormControl = styled(FormControl)`
   opacity: ${({ emailsent }) => (emailsent === 'true' ? '1' : '0')};
   transition: width 500ms ease-out 1000ms, left 500ms ease-out 1000ms, border 500ms ease-out, opacity 250ms ease-out 1000ms;
   font-weight: bold;
-  z-index: -1;
+  /* z-index: -1; */
 }
 `;
 
@@ -109,7 +114,6 @@ const EmailLink = styled.div`
 `;
 
 const sendEmail = (variables, setEmailsent, resetForm) => {
-  setEmailsent(true);
   window.emailjs
     .send('gmail_mambansmyportfolio', 'myportfolio_contactme', variables)
     .then((res) => {
@@ -174,6 +178,7 @@ export default () => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
 
+    setEmailsent(true);
     sendEmail(
       {
         from_name  : name,
@@ -187,51 +192,56 @@ export default () => {
 
   return (
     <StyledFormControl onSubmit={handleSubmit} emailsent={String(emailsent)} theme={theme}>
-      <TitleLink href='#contact_me' style={{ marginTop: '35px' }}>
-        Contact me
-      </TitleLink>
-      <TextField
-        className='input'
-        id='filled-basic'
-        label='Name'
-        variant='filled'
-        color='secondary'
-        {...bindName('Name')}
-      />
-      <TextField
-        className='input'
-        id='filled-basic'
-        label='Email'
-        variant='filled'
-        color='secondary'
-        helperText={invalidEmail() && 'Invalid email'}
-        error={invalidEmail()}
-        {...bindEmail('Email')}
-      />
-      <TextField
-        className='input'
-        multiline
-        rows={4}
-        rowsMax={100}
-        id='filled-basic'
-        label='Text'
-        variant='filled'
-        color='secondary'
-        {...bindText('Text')}
-      />
-      <SendButton
-        type='submit'
-        variant='contained'
-        color='secondary'
-        size='large'
-        onClick={handleSubmit}
-        emailsent={String(emailsent)}
-        disabled={!name || !email || !text || invalidEmail()}>
-        {emailsent ? 'Sent' : 'Submit'}
-      </SendButton>
-      <EmailLink theme={theme}>
-        <a href='mailto:perssons1996@gmail.com'>Or direcly via email</a>
-      </EmailLink>
+      <LazyLoading width={500} height={[ 50, 50, 50, 115, 50, 50 ]} threshhold={0.2}>
+        <TitleLink href='#contact_me' style={{ marginTop: '35px' }}>
+          Contact me
+        </TitleLink>
+        <TextField
+          className='input'
+          id='filled-basic'
+          label='Name'
+          variant='filled'
+          color='secondary'
+          placeholder='Robin Persson'
+          {...bindName('Name')}
+        />
+        <TextField
+          className='input'
+          id='filled-basic'
+          label='Email'
+          variant='filled'
+          color='secondary'
+          placeholder='robin@example.com'
+          helperText={invalidEmail() && 'Invalid email'}
+          error={invalidEmail()}
+          {...bindEmail('Email')}
+        />
+        <TextField
+          className='input'
+          multiline
+          rows={4}
+          rowsMax={100}
+          id='filled-basic'
+          label='Text'
+          variant='filled'
+          color='secondary'
+          placeholder='Good evening, my name is...'
+          {...bindText('Text')}
+        />
+        <SendButton
+          type='submit'
+          variant='contained'
+          color='secondary'
+          size='large'
+          onClick={handleSubmit}
+          disabled={!name || !email || !text || invalidEmail()}
+          emailsent={String(emailsent)}>
+          {emailsent ? 'Message sent' : 'Send message'}
+        </SendButton>
+        <EmailLink theme={theme}>
+          <a href='mailto:perssons1996@gmail.com'>Or direcly via email</a>
+        </EmailLink>
+      </LazyLoading>
     </StyledFormControl>
   );
 };

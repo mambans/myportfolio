@@ -22,14 +22,20 @@ const Item = styled.div`
   text-decoration: none;
   text-shadow: 0px 0px 5px black;
   background-position: center;
+  cursor: pointer;
 
-  h1 {
+  a#title {
     z-index: 1;
     height: 50px;
     margin: 15px 0;
     position: relative;
     transition: transform 500ms cubic-bezier(.35, .89, .34, .92);
     transform: translateY(calc(${HEIGHT / 2}px - 40px));
+    display: block;
+    text-decoration: none;
+    color: white;
+    font-size: 2em;
+    font-weight: bolder;
   }
 
   p {
@@ -46,8 +52,8 @@ const Item = styled.div`
       opacity: 0;
     }
 
-    h1 {
-      transform: translateY(0);
+    a#title {
+      transform: translateY(10px);
     }
 
     #LanguagesUsed {
@@ -56,7 +62,7 @@ const Item = styled.div`
   }
 `;
 
-const HoverPlaceholder = styled.a`
+const HoverPlaceholder = styled.div`
   opacity: 0.75;
   transition: opacity 400ms;
   font-size: 2rem;
@@ -72,16 +78,10 @@ const HoverPlaceholder = styled.a`
   transform: translateY(-77.5px);
   background-position: center;
 
-  div {
-    width: calc(100% - 5px);
-    height: calc(100% - 5px);
-    background-image: url(/images/${({ backgroundImg }) => backgroundImg || 'woodCoffe.jpg'});
-    background-size: cover;
-    filter: blur(5px);
-    border-radius: inherit;
-    background-position: center;
-    /* position: absolute; */
-  }
+  background-image: url(/images/${({ backgroundImg }) => backgroundImg || 'woodCoffe.jpg'});
+  background-size: cover;
+  -webkit-filter: blur(5px);
+  filter: blur(5px);
 
   p {
     opacity: 1;
@@ -114,21 +114,33 @@ const LanguagesUsed = styled.div`
   transition: opacity 250ms;
 
   svg {
-    padding: 2px;
+    margin: 2px;
   }
 `;
 
-const ProjectItem = ({ title, text, link, githubLink, backgroundImg, languagesIcons }) => {
+const ProjectItem = ({
+  title,
+  text,
+  link,
+  githubLink,
+  backgroundImg,
+  languagesIcons,
+  selectProject,
+}) => {
   return (
     <Item backgroundImg={backgroundImg}>
       <GithubIconLink href={githubLink}>
         <GitHubIcon />
       </GithubIconLink>
-      <h1>{title}</h1>
-      <HoverPlaceholder className='hoverCover' href={link} backgroundImg={backgroundImg}>
-        <div />
-        {/* <p>{title}</p> */}
-      </HoverPlaceholder>
+      <a id='title' href={link}>
+        {title}
+      </a>
+      <HoverPlaceholder
+        onClick={selectProject}
+        className='hoverCover'
+        href={link}
+        backgroundImg={backgroundImg}
+      />
       <p>{text}</p>
       <LanguagesUsed id='LanguagesUsed'>
         {languagesIcons &&
