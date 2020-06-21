@@ -121,9 +121,10 @@ export default () => {
       />
       <Project.Container>
         <LazyLoading transition='fadeSlideUp' height={350} width={16 / 9 * 300 + 50}>
-          {Object.values(ProjectsObject).map((project) => {
+          {Object.values(ProjectsObject).map((project, index) => {
             return (
               <Project.Item
+                key={index}
                 selectProject={() => {
                   setSelected(project);
                   setTimeout(() => {
