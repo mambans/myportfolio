@@ -15,6 +15,10 @@ const Container = styled.div`
   letter-spacing: 0.5px;
   padding: 10px;
 
+  a.link {
+    color: ${({ theme }) => theme.linkColor};
+  }
+
   @media screen and (max-width: 1000px) {
     width: 100%;
   }
@@ -27,32 +31,25 @@ export default () => {
       <TitleLink href='#about_me'>A little bit about me</TitleLink>
       <LazyLoading height={25} width={'100%'} delay={50}>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget metus ut nulla
-          elementum eleifend. Aliquam consequat massa facilisis, vulputate enim non, convallis ante.
-          Donec imperdiet nunc ante, lacinia suscipit massa pulvinar luctus. Nam id leo arcu. Duis
-          lobortis, nisl id vulputate malesuada, lorem nisi tempus odio, ac tincidunt ante felis ut
-          nunc. Nunc vitae cursus purus. Maecenas quis convallis arcu, a lacinia arcu. Suspendisse
-          vestibulum dignissim pharetra. Orci varius natoque penatibus et magnis dis parturient
-          montes, nascetur ridiculus mus. Pellentesque at pharetra ex. In et justo nisi.
+          My name is Robin Persson and I'm from Skåne (southern) Sweden. I movies, tv series and
+          love "all" things computer related and I started light programming by my self after
+          highschool but it wasn't until univeristy i started coding working applications.
         </p>
 
         <p>
-          In vitae risus magna. Aliquam id gravida sapien, ac lobortis mauris. Duis ullamcorper
-          sollicitudin magna nec rutrum. Duis tempus convallis turpis, at hendrerit lectus sagittis
-          ut. Fusce ac sem a velit accumsan varius ut in erat. Praesent et turpis viverra, tincidunt
-          felis eu, ullamcorper enim. Vestibulum commodo nulla et mauris volutpat, nec vehicula
-          nulla vestibulum. Morbi ullamcorper lacus sit amet elit feugiat mattis. Praesent viverra
-          eros quis massa porta, at imperdiet nisl tempor.
+          I went one year in univeristy for "web programming" and towards the end and after I worked
+          on applications that I used my self, which inturn gave me passion for my projects. My
+          first big project was also my first time with ReactJS, DNS and Aws.
         </p>
 
         <p>
-          Mauris aliquet lorem et dolor volutpat, nec tempor enim blandit. Maecenas rutrum vitae
-          elit vel dictum. Nunc et vestibulum dui. Aliquam vehicula mauris at dui porttitor, non
-          ultricies metus scelerisque. In quam tellus, sodales vel mi vitae, aliquam commodo sapien.
-          Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
-          Nunc pellentesque ligula a massa fermentum, eget accumsan augue suscipit. Lorem ipsum
-          dolor sit amet, consectetur adipiscing elit. Duis ac massa elementum, tristique nibh quis,
-          consequat turpis.
+          My first big project at{' '}
+          <a className='link' href='www.aiofeed.com'>
+            www.aiofeed.com
+          </a>{' '}
+          is an application which combines Twitch/Youtube/Twitter feeds in one page. I started this
+          project because there were features I personally wanted and thought were missing from
+          Twitch.tv.
         </p>
 
         <p>
@@ -61,15 +58,6 @@ export default () => {
           dapibus diam non tristique. Proin eu massa dignissim, euismod ipsum et, posuere mi. Donec
           sed gravida quam. Cras ut venenatis lacus. Morbi in scelerisque purus. Praesent quis
           lobortis lectus. Quisque aliquet dolor vel consequat malesuada.
-        </p>
-
-        <p>
-          Ut ac lacus sed justo pulvinar volutpat sed sit amet sapien. Integer nisl mi, pretium ac
-          massa et, pretium porttitor elit. Maecenas iaculis lobortis arcu. Nullam quis laoreet
-          mauris. Maecenas vel eros sit amet lectus viverra euismod vel eget urna. Aenean purus
-          massa, lobortis sit amet venenatis eget, ultrices vitae sapien. Nunc vel nunc at lacus
-          laoreet aliquet. Phasellus sit amet dolor lorem. Cras consectetur posuere mi, sit amet
-          euismod mauris consectetur id.
         </p>
 
         <p>
