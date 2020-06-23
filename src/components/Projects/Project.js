@@ -1,6 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import GitHubIcon from '@material-ui/icons/GitHub';
+import { DiJavascript } from 'react-icons/di';
+import { AiOutlineConsoleSql } from 'react-icons/ai';
+
+import {
+  FaReact,
+  FaAws,
+  FaCss3Alt,
+  FaSass,
+  FaHtml5,
+  FaNodeJs,
+  FaLess,
+  FaGithub,
+} from 'react-icons/fa';
 
 const HEIGHT = 300;
 
@@ -8,7 +21,7 @@ const Item = styled.div`
   height: ${HEIGHT}px;
   /* width: calc(100% / 3); */
   /* width: calc(calc(100% / 3) - 50px); */
-  width: ${16 / 9 * HEIGHT}px;
+  width: ${(16 / 9) * HEIGHT}px;
   max-width: 100%;
   /* min-width:  */
   /* width: calc((100% / 3) - 20px); */
@@ -29,7 +42,7 @@ const Item = styled.div`
     height: 50px;
     margin: 15px 0;
     position: relative;
-    transition: transform 500ms cubic-bezier(.35, .89, .34, .92);
+    transition: transform 500ms cubic-bezier(0.35, 0.89, 0.34, 0.92);
     transform: translateY(calc(${HEIGHT / 2}px - 40px));
     display: block;
     text-decoration: none;
@@ -69,7 +82,7 @@ const HoverPlaceholder = styled.div`
   height: ${HEIGHT}px;
   position: absolute;
   /* width: calc(calc(100% / 3) - 50px); */
-  width: ${16 / 9 * HEIGHT}px;
+  width: ${(16 / 9) * HEIGHT}px;
   max-width: 100%;
   display: flex;
   align-items: center;
@@ -118,13 +131,49 @@ const LanguagesUsed = styled.div`
   }
 `;
 
+export const Icons = (languages, size = 20, includeText) => {
+  const iconNames = {
+    javascript: <DiJavascript title='JavaScript' style={{ color: 'yellow' }} size={size} />,
+    reactjs: <FaReact title='React' style={{ color: '#65ffff' }} size={size} />,
+    aws: <FaAws title='Aws' style={{ color: '#ffc940' }} size={size} />,
+    css: <FaCss3Alt title='Css' style={{ color: 'rgb(33, 100, 243)' }} size={size} />,
+    less: <FaLess style={{ color: 'black' }} size={size} />,
+    sass: <FaSass title='Sass' style={{ color: '#c96195' }} size={size} />,
+    github: <FaGithub style={{ color: 'white' }} size={size} />,
+    html: <FaHtml5 style={{ color: '#ff8a58' }} size={size} />,
+    nodejs: <FaNodeJs style={{ color: 'green' }} size={size} />,
+    sql: <AiOutlineConsoleSql style={{ color: '#313131' }} size={size} />,
+  };
+
+  if (Array.isArray(languages) && languages.length >= 1) {
+    if (!includeText) {
+      return languages.map((name, index) => {
+        const foundIcon = iconNames[name.toLowerCase()];
+        return foundIcon && { ...foundIcon, key: index, title: name };
+      });
+    } else {
+      return languages.map((name, index) => {
+        const foundIcon = iconNames[name.toLowerCase()];
+        return (
+          foundIcon && {
+            icon: { ...foundIcon, key: index, title: name },
+            name,
+          }
+        );
+      });
+    }
+  }
+
+  return iconNames[languages];
+};
+
 const ProjectItem = ({
   title,
   text,
   link,
   githubLink,
   backgroundImg,
-  languagesIcons,
+  languages,
   selectProject,
 }) => {
   return (
@@ -142,23 +191,18 @@ const ProjectItem = ({
         backgroundImg={backgroundImg}
       />
       <p>{text}</p>
-      <LanguagesUsed id='LanguagesUsed'>
-        {languagesIcons &&
-          languagesIcons.map((item, index) => {
-            return { ...item, key: index };
-          })}
-      </LanguagesUsed>
+      <LanguagesUsed id='LanguagesUsed'>{languages && Icons(languages, 20)}</LanguagesUsed>
     </Item>
   );
 };
 
 export default {
-  Container : styled.div`
+  Container: styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     transform: translateY(-75px);
     /* padding-top: 220px; */
   `,
-  Item      : ProjectItem,
+  Item: ProjectItem,
 };

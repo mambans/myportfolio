@@ -1,20 +1,9 @@
 import React, { useContext } from 'react';
 import { TitleLink } from '../SharedStyledComponents';
 import styled from 'styled-components';
-import { DiJavascript } from 'react-icons/di';
-import { AiOutlineConsoleSql } from 'react-icons/ai';
-import {
-  FaReact,
-  FaAws,
-  FaHtml5,
-  FaCss3Alt,
-  FaNodeJs,
-  FaSass,
-  FaLess,
-  FaGithub,
-} from 'react-icons/fa';
 import ThemeContext from '../Theme/ThemeContext';
 import LazyLoading from '../LazyLoading';
+import { Icons } from './../Projects/Project';
 
 const Container = styled.div`
   color: ${({ theme }) => theme.color};
@@ -41,6 +30,10 @@ const Item = styled.div`
   flex-flow: column;
   width: max-content;
   width: 150px;
+
+  svg {
+    margin: 15px auto;
+  }
 `;
 
 const ItemsContainer = styled.div`
@@ -49,6 +42,19 @@ const ItemsContainer = styled.div`
   font-weight: bold;
 `;
 
+const knownLanguages = [
+  'JavaScript',
+  'ReactJs',
+  'AWS',
+  'HTML',
+  'CSS',
+  'NodeJs',
+  'Sass',
+  'Less',
+  'Github',
+  'SQL',
+];
+
 export default () => {
   const theme = useContext(ThemeContext);
   return (
@@ -56,46 +62,14 @@ export default () => {
       <TitleLink href='#knowledge'>{'< Languages, Frameworks I know />'}</TitleLink>
       <ItemsContainer theme={theme}>
         <LazyLoading transition='fadeSlideLeft' delay={100} increment={75} width={150} height={150}>
-          <Item>
-            <DiJavascript style={{ color: 'yellow' }} size={100} />
-            JavaScript
-          </Item>
-          <Item>
-            <FaReact style={{ color: '#65ffff' }} size={100} />
-            ReactJs
-          </Item>
-          <Item>
-            <FaAws style={{ color: '#ffc940' }} size={100} />
-            AWS
-          </Item>
-          <Item>
-            <FaHtml5 style={{ color: '#ff8a58' }} size={100} />
-            HTML
-          </Item>
-          <Item>
-            <FaCss3Alt style={{ color: 'rgb(33, 100, 243)' }} size={100} />
-            CSS
-          </Item>
-          <Item>
-            <FaNodeJs style={{ color: 'green' }} size={100} />
-            NodeJs
-          </Item>
-          <Item>
-            <FaSass style={{ color: '#c96195' }} size={100} />
-            Sass
-          </Item>
-          <Item>
-            <FaLess style={{ color: 'black' }} size={100} />
-            Less
-          </Item>
-          <Item>
-            <FaGithub style={{ color: 'white' }} size={100} />
-            Github
-          </Item>
-          <Item>
-            <AiOutlineConsoleSql style={{ color: '#313131' }} size={100} />
-            SQL
-          </Item>
+          {Icons(knownLanguages, 100, true).map((item, index) => {
+            return (
+              <Item key={index}>
+                {item && item.icon}
+                {item && item.name}
+              </Item>
+            );
+          })}
         </LazyLoading>
       </ItemsContainer>
     </Container>

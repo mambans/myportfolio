@@ -2,13 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LaunchIcon from '@material-ui/icons/Launch';
-
-const Container = styled.div`
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-`;
+import { Icons } from './Project';
 
 const BigProjectItem = styled.div`
   background-image: url(/images/${({ selected }) => selected.backgroundImg || 'woodCoffe.jpg'});
@@ -16,13 +10,14 @@ const BigProjectItem = styled.div`
   background-size: cover;
 
   border-radius: 25px;
-  width: 50%;
+  width: 70%;
+  padding-bottom: calc(56.25% * 0.7);
   /* height: 500px; */
-  padding-bottom: calc(56.25% * 0.5);
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
   position: relative;
+  margin: auto;
 `;
 
 const GithubIconLink = styled.a`
@@ -94,25 +89,18 @@ const LanguagesUsed = styled.div`
 
 export default React.forwardRef(({ selected }, ref) => {
   return (
-    <Container ref={ref}>
-      <BigProjectItem classNames='TextOverlay' selected={selected}>
-        <TextOverlay>
-          <GithubIconLink href={selected.githubLink}>
-            <GitHubIcon />
-          </GithubIconLink>
-          <a id='title' href={selected.link}>
-            {selected.title}
-            <LaunchIcon size={'inherit'} />
-          </a>
-          <p>{selected.bigText}</p>
-          <LanguagesUsed id='LanguagesUsed'>
-            {selected.languagesIcons &&
-              selected.languagesIcons.map((item, index) => {
-                return { ...item, key: index, props: { ...item.props, size: 50 } };
-              })}
-          </LanguagesUsed>
-        </TextOverlay>
-      </BigProjectItem>
-    </Container>
+    <BigProjectItem classNames='TextOverlay' ref={ref} selected={selected}>
+      <TextOverlay>
+        <GithubIconLink href={selected.githubLink}>
+          <GitHubIcon />
+        </GithubIconLink>
+        <a id='title' href={selected.link}>
+          {selected.title}
+          <LaunchIcon size={'inherit'} />
+        </a>
+        <p>{selected.bigText}</p>
+        <LanguagesUsed id='LanguagesUsed'>{Icons(selected.languages, 50)}</LanguagesUsed>
+      </TextOverlay>
+    </BigProjectItem>
   );
 });
