@@ -3,7 +3,7 @@ import { TitleLink } from '../SharedStyledComponents';
 import styled from 'styled-components';
 import ThemeContext from '../Theme/ThemeContext';
 import LazyLoading from '../LazyLoading';
-import { Icons } from './../Projects/Project';
+import Icons from './Icons';
 
 const Container = styled.div`
   color: ${({ theme }) => theme.color};

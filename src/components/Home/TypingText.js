@@ -9,25 +9,26 @@ const StyledTypist = styled(Typist)`
   max-width: 100%;
   /* margin-left: 5rem; */
   padding: 10px;
-	color: rgb(240,240,240);
-	position: relative;
-	text-align: initial;
-	/* position: absolute; */
-	font-size: 1.8rem;
+  color: rgb(240, 240, 240);
+  position: relative;
+  text-align: initial;
+  /* position: absolute; */
+  font-size: 1.8rem;
+  text-align: center;
 
-	code {
+  code {
     font-size: 1.4rem;
     max-width: 100%;
-display: flex;
+    display: flex;
   }
 
-   a{
-     color: white;
-     font-size: 3rem;
-     text-decoration: none;
-   }
+  a {
+    color: white;
+    font-size: 3rem;
+    text-decoration: none;
+  }
 
-   /* @media screen and (min-width: 1000px) {
+  /* @media screen and (min-width: 1000px) {
     min-width: 100px;
   } */
 `;
@@ -37,7 +38,7 @@ export default () => {
   // const welcomeMsg =
   //   time <= 5 ? 'night' : time <= 10 ? 'morning' : time <= 18 ? 'evening' : 'night';
   const welcomeMsg = time <= 5 ? 1 : time <= 10 ? 2 : time <= 17 ? 3 : time <= 20 ? 4 : 1;
-  const msgs = [ 'evening', 'night', 'morning', 'day', 'evening' ];
+  const msgs = ['evening', 'night', 'morning', 'day', 'evening'];
   const charDelay = 1500 / (`good${msgs[welcomeMsg]}`.length + 10);
 
   return (

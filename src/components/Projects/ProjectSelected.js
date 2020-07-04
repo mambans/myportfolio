@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LaunchIcon from '@material-ui/icons/Launch';
-import { Icons } from './Project';
+import Icons from '../Knowledge/Icons';
 
 const BigProjectItem = styled.div`
   background-image: url(/images/${({ selected }) => selected.backgroundImg || 'woodCoffe.jpg'});

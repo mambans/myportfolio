@@ -52,25 +52,12 @@ const ProjectsObject = {
     languages: ['JavaScript', 'ReactJs', 'AWS', 'Sass'],
   },
   felix: {
-    title: 'Felix',
-    text: 'Hello, this is my some context about me and who I am.',
+    title: 'MyPortfolio',
+    text: 'My portfolio site to my projects and information about me.',
     bigText: 'Hello, this is my some context about me and who I am.',
-    link: 'https://www.google.com',
-    githubLink: 'https://github.com/mambans/aiofeed',
-  },
-  alex: {
-    title: 'Alex',
-    text: 'Hello, this is my some context about me and who I am.',
-    bigText: 'Hello, this is my some context about me and who I am.',
-    link: 'https://www.google.com',
-    githubLink: 'https://github.com/mambans/aiofeed',
-  },
-  demosar: {
-    title: 'Demozar',
-    text: 'Hello, this is my some context about me and who I am.',
-    bigText: 'Hello, this is my some context about me and who I am.',
-    link: 'https://www.google.com',
-    githubLink: 'https://github.com/mambans/aiofeed',
+    backgroundImg: 'site_myportfolio.png',
+    link: 'http://myportfolio.mambans.com.s3-website.eu-north-1.amazonaws.com/',
+    githubLink: 'https://github.com/mambans/myportfolio',
   },
 };
 
