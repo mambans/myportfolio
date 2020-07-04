@@ -14,14 +14,17 @@ const StyledProjectsFlap = styled.a`
   color: ${({ theme }) => theme.color2};
   border-bottom: ${({ theme }) => `2px solid ${theme.background}`};
   transform: ${({ fullyVisible }) => (fullyVisible ? 'translateY(-125px)' : 'translateY(-100px)')};
-  transition: transform 250ms, color 500ms, left 500ms, background 500ms, border 500ms;
+  transition: transform 250ms, color 500ms, left 500ms, background 500ms, border 500ms,
+    opacity 500ms;
   text-decoration: none;
   background: ${({ theme }) => theme.background};
   box-sizing: unset;
+  opacity: ${({ fullyVisible }) => (fullyVisible ? '1' : '0.75')};
 
   &:hover {
     color: ${({ theme }) => theme.color};
     transform: translateY(-125px);
+    opacity: 1;
   }
 
   &::before {
@@ -44,22 +47,6 @@ const StyledProjectsFlap = styled.a`
         : 'width 500ms ease-out 500ms, left 500ms ease-out 500ms, height 500ms ease-out, border 500ms ease-out 500ms'};
   }
 
-  /* &::after {
-    box-sizing: inherit;
-    content: '';
-    position: absolute;
-    top: 0;
-    border-top: 2px solid transparent;
-    border-right: 2px solid transparent;
-    border-left: 2px solid transparent;
-    width: 0;
-    height: 0;
-    left: 50%;
-
-    transition: width 500ms ease-out 500ms, left 500ms ease-out 500ms, height 500ms ease-out,
-      border 500ms ease-out 500ms;
-  } */
-
   &:hover::before {
     left: 0;
     width: 100%;
@@ -70,17 +57,6 @@ const StyledProjectsFlap = styled.a`
     transition: width 500ms ease-out, left 500ms ease-out, height 500ms ease-out 500ms,
       border 500ms ease-out;
   }
-
-  /* &:hover::after {
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-top-color: orange;
-    border-right-color: orange;
-    border-left-color: orange;
-    transition: width 500ms ease-out, left 500ms ease-out, height 500ms ease-out 500ms,
-      border 500ms ease-out;
-  } */
 `;
 
 export default React.forwardRef(({ fullyVisible }, ref) => {
@@ -94,12 +70,13 @@ export default React.forwardRef(({ fullyVisible }, ref) => {
       onClick={(e) => {
         if (e.target) {
           e.target.scrollIntoView({
-            behavior : 'smooth',
-            block    : 'start',
-            inline   : 'nearest',
+            behavior: 'smooth',
+            block: 'start',
+            inline: 'nearest',
           });
         }
-      }}>
+      }}
+    >
       <h2>Projects</h2>
     </StyledProjectsFlap>
   );
