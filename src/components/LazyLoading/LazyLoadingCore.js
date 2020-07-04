@@ -10,7 +10,9 @@ const ItemPlaceholder = styled.div`
   width: ${({ height, width }) =>
     width && typeof width === 'string'
       ? width
-      : width ? width + 'px' : 16 / 9 * (typeof height === 'string' ? height : height) + 'px'};
+      : width
+      ? width + 'px'
+      : (16 / 9) * (typeof height === 'string' ? height : height) + 'px'};
   /* width: calc(calc(100% / 3) - 50px); */
   margin: ${({ margin }) => margin};
   padding: ${({ padding }) => padding};
@@ -27,41 +29,38 @@ export default ({
   margin = 0,
   padding = '25px',
 }) => {
-  const [ show, setShow ] = useState();
+  const [show, setShow] = useState();
   const placeholderRef = useRef();
   const delayTimer = useRef();
 
-  useEffect(
-    () => {
-      const placeholder = placeholderRef.current;
+  useEffect(() => {
+    const placeholder = placeholderRef.current;
 
-      if (placeholder) {
-        const observer = new IntersectionObserver(
-          function(entries) {
-            if (entries[0].isIntersecting === true) {
-              if (delay) {
-                delayTimer.current = setTimeout(() => {
-                  setShow(true);
-                }, delay);
-              } else {
+    if (placeholder) {
+      const observer = new IntersectionObserver(
+        function (entries) {
+          if (entries[0].isIntersecting === true) {
+            if (delay) {
+              delayTimer.current = setTimeout(() => {
                 setShow(true);
-              }
+              }, delay);
+            } else {
+              setShow(true);
             }
-            return false;
-          },
-          { threshold },
-        );
+          }
+          return false;
+        },
+        { threshold },
+      );
 
-        observer.observe(placeholder);
+      observer.observe(placeholder);
 
-        return () => {
-          observer.unobserve(placeholder);
-          clearTimeout(delayTimer.current);
-        };
-      }
-    },
-    [ delay, threshold ],
-  );
+      return () => {
+        observer.unobserve(placeholder);
+        clearTimeout(delayTimer.current);
+      };
+    }
+  }, [delay, threshold]);
 
   if (show) {
     return (

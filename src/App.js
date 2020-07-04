@@ -17,7 +17,7 @@ const AppContainer = styled.div`
 `;
 
 function App() {
-  const [ theme, setTheme ] = useState(
+  const [theme, setTheme] = useState(
     getLocalstorage('activeTheme')
       ? themes[getLocalstorage('activeTheme').toLowerCase() || 'dark']
       : themes.dark,
@@ -37,9 +37,9 @@ function App() {
       if (hashElement) {
         setTimeout(() => {
           hashElement.scrollIntoView({
-            behavior : 'smooth',
-            block    : 'start',
-            inline   : 'nearest',
+            behavior: 'smooth',
+            block: 'start',
+            inline: 'nearest',
           });
         }, 0);
       }

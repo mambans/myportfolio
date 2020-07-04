@@ -24,8 +24,8 @@ export default ({
         (index === 0
           ? 0
           : Array.isArray(increment)
-            ? increment[index - 1] || increment[increment.length - 1]
-            : increment);
+          ? increment[index - 1] || increment[increment.length - 1]
+          : increment);
       return (
         <LazyLoadingCore
           key={index}
@@ -33,19 +33,24 @@ export default ({
           width={Array.isArray(width) ? width[index] || width[width.length - 1] : width}
           delay={delayTime}
           transition={
-            Array.isArray(transition) ? (
-              transition[index] || transition[transition.length - 1]
-            ) : (
-              transition || `fadeSlide${index % 2 === 0 ? 'Right' : 'Left'}`
-            )
-          }>
+            Array.isArray(transition)
+              ? transition[index] || transition[transition.length - 1]
+              : transition || `fadeSlide${index % 2 === 0 ? 'Right' : 'Left'}`
+          }
+        >
           {item}
         </LazyLoadingCore>
       );
     });
   }
   return (
-    <LazyLoadingCore height={height} width={width} transition={transition} threshold={threshold}>
+    <LazyLoadingCore
+      height={height}
+      width={width}
+      transition={transition}
+      threshold={threshold}
+      delay={delay}
+    >
       {children}
     </LazyLoadingCore>
   );
