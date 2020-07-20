@@ -22,8 +22,6 @@ const Banner = styled.header`
     left: 0;
     width: 100%;
     height: 100%;
-    /* background-image: url('/images/woodCoffe.jpg'); */
-    /* background-image: url('/images/IMGP1733.jpg'); */
     /* background-image: url('/images/coffee_cpu_plant.jpg'); */
     background-image: url('/images/headphones.jpg');
     background-size: cover;
@@ -133,7 +131,7 @@ export default () => {
           <TypingText />
           <LazyLoading transition='fadeSlideUp' delay={500} increment={200}>
             <WelcomeText theme={theme} fontSize={'1.5rem'}>
-              My name is Robin Persson and I love Computers, Programming and{' '}
+              My name is Robin Persson and I love Programming, Computers, Audio and{' '}
               <coffee id='coffee'>
                 Coffee <LocalCafeIcon size='1.5rem' />
               </coffee>

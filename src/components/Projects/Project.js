@@ -13,7 +13,7 @@ const Item = styled.div`
   max-width: 100%;
   /* min-width:  */
   /* width: calc((100% / 3) - 20px); */
-  background-image: url(/images/${({ backgroundImg }) => backgroundImg || 'woodCoffe.jpg'});
+  background-image: url(${({ backgroundImg }) => backgroundImg});
   background-repeat: no-repeat;
   background-size: cover;
   margin: 25px;
@@ -37,20 +37,30 @@ const Item = styled.div`
     color: white;
     font-size: 2em;
     font-weight: bolder;
+    width: max-content;
+    margin: 15px auto;
+
+    &:hover {
+      text-decoration: underline white solid 3px;
+    }
   }
 
   p {
     transition: opacity 1000ms;
     opacity: 0;
+    padding: 0 10px;
+    text-shadow: 0 0 1px black;
   }
 
   &:hover {
     p {
       opacity: 1;
+      z-index: 1;
+      position: relative;
     }
 
     .hoverCover {
-      opacity: 0;
+      opacity: 0.25;
     }
 
     a#title {
@@ -79,7 +89,7 @@ const HoverPlaceholder = styled.div`
   transform: translateY(-77.5px);
   background-position: center;
 
-  background-image: url(/images/${({ backgroundImg }) => backgroundImg || 'woodCoffe.jpg'});
+  background-image: url(${({ backgroundImg }) => backgroundImg});
   background-size: cover;
   -webkit-filter: blur(5px);
   filter: blur(5px);

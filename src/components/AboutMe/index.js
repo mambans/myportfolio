@@ -61,7 +61,7 @@ export default () => {
           <LazyLoading height={25} width={'100%'} delay={50}>
             <p>
               My name is Robin Persson and I'm from Skåne (southern) Sweden. I have a big interest
-              in movies, tv series and love "all" things computer related and I'm a also a huge fan
+              in movies/tv series, audio and "all" things computer related and I'm a also a huge fan
               of coffee. I started light programming by my self after highschool but it wasn't until
               univeristy i started coding complete applications that I use myself.
             </p>
@@ -79,7 +79,11 @@ export default () => {
               </a>{' '}
               is an application which combines Twitch/Youtube/Twitter feeds in one page. I started
               this project because there were features I personally wanted and thought were missing
-              from Twitch.tv.
+              from{' '}
+              <a className='link' href='www.aiofeed.com'>
+                www.Twitch.tv
+              </a>
+              .
             </p>
           </LazyLoading>
         </TextContainer>

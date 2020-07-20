@@ -7,8 +7,30 @@ import ThemeContext from './../Theme/ThemeContext';
 import ProjectSelected from './ProjectSelected';
 import { CSSTransition } from 'react-transition-group';
 
+function importAll(r) {
+  return r.keys().map(r);
+}
+
+const CreateProject = ({
+  title,
+  text,
+  bigText,
+  link,
+  languages,
+  githubLink = `https://github.com/mambans/${title.toLowerCase()}`,
+  images,
+}) => ({
+  title,
+  text,
+  bigText,
+  link,
+  languages,
+  githubLink,
+  backgroundImg: require(`./../../assets/${title.toLowerCase()}/0.webp`),
+  images,
+});
+
 const Container = styled.div`
-  min-height: 1000px;
   /* background: ${({ theme }) => theme.background}; */
   /* background: rgb(35, 35, 50); */
   padding: 0 10%;
@@ -29,36 +51,40 @@ const Container = styled.div`
 `;
 
 const ProjectsObject = {
-  aiofeed: {
+  aiofeed: CreateProject({
     title: 'AioFeed',
     text:
       'View Twitch & Youtube feeds and a Twitter list in one page, with Twitch (live/offline/update) notifications.',
     bigText:
       'View Twitch & Youtube feeds and a Twitter list in one page, with Twitch (live/offline/update) notifications.',
     link: 'https://aiofeed.com',
-    githubLink: 'https://github.com/mambans/aiofeed',
-    backgroundImg: 'site_aiofeed.png',
     languages: ['JavaScript', 'ReactJs', 'AWS', 'Css'],
-  },
-  watchist: {
+    images: importAll(
+      require.context(`./../../assets/${'aiofeed'}/`, false, /\.(png|jpe?g|webp)$/),
+    ),
+  }),
+  watchist: CreateProject({
     title: 'Watchist',
     text:
       "Create a variety of lists with auto fetching details(for movies/tv series) from public API's.",
     bigText:
       "Create a variety of lists with auto fetching details(for movies/tv series) from public API's.",
     link: 'http://watchist.mambans.com.s3-website.eu-north-1.amazonaws.com/',
-    githubLink: 'https://github.com/mambans/watchist',
-    backgroundImg: 'site_watchist.png',
     languages: ['JavaScript', 'ReactJs', 'AWS', 'Sass'],
-  },
-  felix: {
+    images: importAll(
+      require.context(`./../../assets/${'watchist'}/`, false, /\.(png|jpe?g|webp)$/),
+    ),
+  }),
+  myportfolio: CreateProject({
     title: 'MyPortfolio',
     text: 'My portfolio site to my projects and information about me.',
     bigText: 'Hello, this is my some context about me and who I am.',
-    backgroundImg: 'site_myportfolio.png',
     link: 'http://myportfolio.mambans.com.s3-website.eu-north-1.amazonaws.com/',
-    githubLink: 'https://github.com/mambans/myportfolio',
-  },
+    languages: ['JavaScript', 'ReactJs', 'AWS', 'Sass'],
+    images: importAll(
+      require.context(`./../../assets/${'myportfolio'}/`, false, /\.(png|jpe?g|webp)$/),
+    ),
+  }),
 };
 
 export default () => {
@@ -125,7 +151,7 @@ export default () => {
       </Project.Container>
       <CSSTransition
         key={selected.title}
-        in={selected}
+        in={Boolean(selected)}
         classNames={'fadeSlideLeft'}
         timeout={1500}
         appear

@@ -29,12 +29,12 @@ export default (languages, size = 20, includeText) => {
 
   if (Array.isArray(languages) && languages.length >= 1) {
     if (!includeText) {
-      return languages.map((name, index) => {
+      return languages?.map((name, index) => {
         const foundIcon = iconNames[name.toLowerCase()];
         return foundIcon && { ...foundIcon, key: index, title: name };
       });
     } else {
-      return languages.map((name, index) => {
+      return languages?.map((name, index) => {
         const foundIcon = iconNames[name.toLowerCase()];
         return (
           foundIcon && {
@@ -46,5 +46,5 @@ export default (languages, size = 20, includeText) => {
     }
   }
 
-  return iconNames[languages.toLowerCase()];
+  return iconNames[languages?.toLowerCase()];
 };
