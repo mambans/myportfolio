@@ -12,7 +12,7 @@ export const themes = {
   },
   dark: {
     name: 'Dark',
-    background: 'rgb(35, 35, 45)',
+    background: 'rgb(29, 21, 35)',
     color: '#ffffff',
     color2: 'rgb(200,200,200)',
     color3: 'rgb(175,175,175)',

@@ -24,7 +24,8 @@ const Banner = styled.header`
     height: 100%;
     /* background-image: url('/images/woodCoffe.jpg'); */
     /* background-image: url('/images/IMGP1733.jpg'); */
-    background-image: url('/images/coffee_cpu_plant.jpg');
+    /* background-image: url('/images/coffee_cpu_plant.jpg'); */
+    background-image: url('/images/headphones.jpg');
     background-size: cover;
     background-repeat: none;
     filter: brightness(0.75);
@@ -39,7 +40,7 @@ const MeImage = styled.img`
   border-radius: 50%;
   margin: 25px;
   box-shadow: 0px 0px 2px 0px black;
-  opacity: 0.9;
+  opacity: 0.95;
   object-fit: cover;
 `;
 
