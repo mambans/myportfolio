@@ -40,6 +40,8 @@ const ItemsContainer = styled.div`
   display: flex;
   color: ${({ theme }) => theme.color2};
   font-weight: bold;
+  flex-wrap: wrap;
+  justify-content: center;
 `;
 
 const knownLanguages = [
@@ -61,15 +63,19 @@ export default () => {
     <Container>
       <TitleLink href='#knowledge'>{'< Languages, Frameworks I know />'}</TitleLink>
       <ItemsContainer theme={theme}>
-        <LazyLoading transition='fadeSlideLeft' delay={100} increment={75} width={150} height={150}>
-          {Icons(knownLanguages, 100, true).map((item, index) => {
-            return (
-              <Item key={index}>
-                {item && item.icon}
-                {item && item.name}
-              </Item>
-            );
-          })}
+        <LazyLoading
+          transition='fadeSlideRight'
+          delay={100}
+          increment={100}
+          width={150}
+          height={150}
+        >
+          {Icons(knownLanguages, 100, true).map((item, index) => (
+            <Item key={index}>
+              {item && item.icon}
+              {item && item.name}
+            </Item>
+          ))}
         </LazyLoading>
       </ItemsContainer>
     </Container>

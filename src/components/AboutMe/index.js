@@ -32,6 +32,8 @@ const Container = styled.div`
 
 const SubContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   /* display: grid;
   grid-template-areas: 'img text';
   grid-template-columns: min-content;
@@ -46,7 +48,12 @@ const SubContainer = styled.div`
   } */
 `;
 
-const TextContainer = styled.div``;
+const TextContainer = styled.div`
+  /* display: flex;
+  flex-wrap: wrap; */
+  max-width: calc(100% - (225px + 25px));
+  min-width: 250px;
+`;
 
 export default () => {
   const theme = useContext(ThemeContext);
@@ -54,7 +61,7 @@ export default () => {
     <Container theme={theme}>
       <TitleLink href='#about_me'>A little bit about me</TitleLink>
       <SubContainer>
-        <LazyLoading height={300} width={'auto%'} delay={50} transition='fadeSlideRight'>
+        <LazyLoading width={225} delay={50} transition='fadeSlideRight'>
           <img src={`${process.env.PUBLIC_URL}/images/me22.jpg`} alt=''></img>
         </LazyLoading>
         <TextContainer>
