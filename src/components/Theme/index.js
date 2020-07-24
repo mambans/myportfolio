@@ -17,9 +17,15 @@ const StyledButton = styled(Button)`
     color: ${({ theme }) => theme.color};
     background: ${({ theme }) => theme.background};
     font-weight: bold;
+    z-index: 10;
+    opacity: 0.7;
 
     span {
       color: unset;
+    }
+
+    &:hover {
+      opacity: 1;
     }
   }
 `;
