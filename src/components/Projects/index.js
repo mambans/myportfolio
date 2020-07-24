@@ -121,7 +121,12 @@ export default () => {
         fullyVisible={show || window.location.hash === '#projects'}
       />
       <Project.Container>
-        <LazyLoading transition='fadeSlideUp' height={350} width={(16 / 9) * 300 + 50}>
+        <LazyLoading
+          transition='fadeSlideLeft'
+          increment={250}
+          height={350}
+          width={(16 / 9) * 300 + 50}
+        >
           {Object.values(ProjectsObject).map((project, index) => {
             return (
               <Project.Item
