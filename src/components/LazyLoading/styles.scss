@@ -27,6 +27,13 @@
   transform: translateX(0);
   transition: opacity 500ms, transform 500ms;
 }
+
+.fadeSlideRight-appear-done {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 500ms, transform 500ms;
+}
+
 .fadeSlideLeft-appear {
   opacity: 0;
   transform: translateX(250px);
@@ -34,6 +41,12 @@
 }
 
 .fadeSlideLeft-appear-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 500ms, transform 500ms;
+}
+
+.fadeSlideLeft-appear-done {
   opacity: 1;
   transform: translateX(0);
   transition: opacity 500ms, transform 500ms;
